@@ -1,3 +1,6 @@
+let playerWinCount = 0;
+let computerWinCount = 0;
+
 // Generates a random move for rock, paper, scissors
 function computerPlay(){
     const ROCK = 0;
@@ -76,4 +79,15 @@ function capitalize(str){
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
-game();
+
+function handleOnClick(button){
+    const computerSelection = computerPlay();
+    const winner = playRound(button, computerSelection);
+    if(winner == 'player'){
+        ++playerWinCount;
+        document.querySelector('#player-score').textContent = playerWinCount;
+    }else if(winner == 'computer'){
+        ++computerWinCount;
+        document.querySelector('#computer-score').textContent = computerWinCount;
+    }
+}

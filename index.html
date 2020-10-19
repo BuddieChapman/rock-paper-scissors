@@ -3,10 +3,23 @@
     <head>
         <title>Rock, Paper, Scissors</title>
         <meta charset="utf-8">
+        <link href="index.css" rel="stylesheet">
     </head>
     <body>
         <h1>Rock, Paper, Scissors</h1>
-        <p>This is a console based game. Please open the console to play.</p>
+        <div class="play-field">
+            <div class="left-side">
+                <div class="underline">PLAYER</div>
+                <div id="player-score">0</div>
+            </div>
+            <div class="right-side">
+                <div class="underline">COMPUTER</div>
+                <div id="computer-score">0</div>
+            </div>
+        </div>
+        <button id="rock" onclick="handleOnClick('rock')">Rock</button>
+        <button id="paper" onclick="handleOnClick('paper')">Paper</button>
+        <button id="scissors" onclick="handleOnClick('scissors')">Scissors</button>
+        <script src="rock-paper-scissors.js"></script>
     </body>
-    <script src="rock-paper-scissors.js"></script>
 </html>
