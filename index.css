@@ -18,6 +18,7 @@ body{
 .play-field{
     height: 100px;
     font-size: xx-large;
+    margin: 50px;
 }
 
 .selector{
@@ -40,4 +41,8 @@ h1{
 
 .lose-color{
     background-color: red;
+}
+
+img {
+    height: 50px;
 }

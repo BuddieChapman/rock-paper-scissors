@@ -90,12 +90,12 @@ function handleOnClick(button){
     if(winner == 'player'){
         ++playerWinCount;
         document.querySelector('#player-score').textContent = playerWinCount;
-        document.querySelector(`#${button}`).classList.add('win-color');
-        document.querySelector(`#${computerSelection.toLowerCase()}`).classList.add('lose-color');
+        document.querySelector(`button.${button}`).classList.add('win-color');
+        document.querySelector(`button.${computerSelection.toLowerCase()}`).classList.add('lose-color');
     }else if(winner == 'computer'){
         ++computerWinCount;
         document.querySelector('#computer-score').textContent = computerWinCount;
-        document.querySelector(`#${button}`).classList.add('lose-color');
-        document.querySelector(`#${computerSelection.toLowerCase()}`).classList.add('win-color');
+        document.querySelector(`button.${button}`).classList.add('lose-color');
+        document.querySelector(`button.${computerSelection.toLowerCase()}`).classList.add('win-color');
     }
 }
