@@ -46,3 +46,21 @@ h1{
 img {
     height: 50px;
 }
+
+#player-selection .rock{
+    scale: -1 1;
+    rotate: -70deg;
+}
+
+#player-selection .paper, #player-selection .scissors{
+    rotate: 30deg;
+}
+
+#computer-selection .rock{
+    rotate: 70deg;
+}
+
+#computer-selection .paper, #computer-selection .scissors{
+    scale: -1 1;
+    rotate: -30deg;
+}

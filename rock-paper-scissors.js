@@ -9,9 +9,9 @@ function computerPlay(){
 
     const computerSelection = Math.floor(Math.random() * 3);
 
-    if(computerSelection == ROCK) return "Rock";
-    if(computerSelection == PAPER) return "Paper";
-    return "Scissors";
+    if(computerSelection == ROCK) return "rock";
+    if(computerSelection == PAPER) return "paper";
+    return "scissors";
 }
 
 // plays a round of rock, paper, scissors and returns the winner
@@ -74,28 +74,35 @@ function game(){
     alert(gameResult);
 }
 
-
 function capitalize(str){
     return str[0].toUpperCase() + str.slice(1).toLowerCase();
 }
 
-
 function handleOnClick(button){
+    const playerSelection = button;
     const computerSelection = computerPlay();
-    const winner = playRound(button, computerSelection);
+    const winner = playRound(playerSelection, computerSelection);
     document.querySelectorAll(".selector").forEach((selector) => {
         selector.classList.remove('win-color');
         selector.classList.remove('lose-color');
     });
+
+    renderPlayfield(playerSelection, computerSelection);
+
     if(winner == 'player'){
         ++playerWinCount;
         document.querySelector('#player-score').textContent = playerWinCount;
-        document.querySelector(`button.${button}`).classList.add('win-color');
+        document.querySelector(`button.${playerSelection}`).classList.add('win-color');
         document.querySelector(`button.${computerSelection.toLowerCase()}`).classList.add('lose-color');
     }else if(winner == 'computer'){
         ++computerWinCount;
         document.querySelector('#computer-score').textContent = computerWinCount;
-        document.querySelector(`button.${button}`).classList.add('lose-color');
+        document.querySelector(`button.${playerSelection}`).classList.add('lose-color');
         document.querySelector(`button.${computerSelection.toLowerCase()}`).classList.add('win-color');
     }
+}
+
+function renderPlayfield(playerSelection, computerSelection){
+    document.querySelector('#player-selection').innerHTML = `<img class="${playerSelection}" src="${playerSelection}.svg">`
+    document.querySelector('#computer-selection').innerHTML = `<img class="${computerSelection}" src="${computerSelection}.svg">`
 }
