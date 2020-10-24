@@ -79,30 +79,68 @@ function capitalize(str){
 }
 
 function handleOnClick(button){
+    if(isGameOver()) return;
     const playerSelection = button;
     const computerSelection = computerPlay();
     const winner = playRound(playerSelection, computerSelection);
-    document.querySelectorAll(".selector").forEach((selector) => {
-        selector.classList.remove('win-color');
-        selector.classList.remove('lose-color');
-    });
+    resetSelectors();
 
     renderPlayfield(playerSelection, computerSelection);
 
     if(winner == 'player'){
         ++playerWinCount;
-        document.querySelector('#player-score').textContent = playerWinCount;
+        updateScore();
         document.querySelector(`button.${playerSelection}`).classList.add('win-color');
         document.querySelector(`button.${computerSelection.toLowerCase()}`).classList.add('lose-color');
     }else if(winner == 'computer'){
         ++computerWinCount;
-        document.querySelector('#computer-score').textContent = computerWinCount;
+        updateScore();
         document.querySelector(`button.${playerSelection}`).classList.add('lose-color');
         document.querySelector(`button.${computerSelection.toLowerCase()}`).classList.add('win-color');
     }
+
+    checkWin();
 }
 
 function renderPlayfield(playerSelection, computerSelection){
     document.querySelector('#player-selection').innerHTML = `<img class="${playerSelection}" src="${playerSelection}.svg">`
     document.querySelector('#computer-selection').innerHTML = `<img class="${computerSelection}" src="${computerSelection}.svg">`
+}
+
+function checkWin(){
+    let gameResultText = '';
+    if(playerWinCount == 5){
+        gameResultText = `YOU WIN ${playerWinCount} - ${computerWinCount}`
+    }else if(computerWinCount == 5){
+        gameResultText = `YOU LOSE ${playerWinCount} - ${computerWinCount}`
+    }
+
+    if(isGameOver()){
+        document.querySelector('#game-result').style.visibility = 'visible';
+        document.querySelector('#game-result-text').textContent = gameResultText;
+    }
+}
+
+function isGameOver(){
+    return playerWinCount == 5 || computerWinCount == 5;
+}
+
+function resetGame(){
+    playerWinCount = 0;
+    computerWinCount = 0;
+    document.querySelector('#game-result').style.visibility = 'hidden';
+    resetSelectors();
+    updateScore();
+}
+
+function resetSelectors(){
+    document.querySelectorAll(".selector").forEach((selector) => {
+        selector.classList.remove('win-color');
+        selector.classList.remove('lose-color');
+    });
+}
+
+function updateScore(){
+    document.querySelector('#player-score').textContent = playerWinCount;
+    document.querySelector('#computer-score').textContent = computerWinCount;
 }
