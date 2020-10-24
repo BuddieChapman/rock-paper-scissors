@@ -25,6 +25,7 @@ body{
     height: 200px;
     width: 90%;
     font-size: 80px;
+    background-color: grey;
 }
 
 .selector:hover{
@@ -45,6 +46,7 @@ h1{
 
 img {
     height: 50px;
+    width: 50px;
 }
 
 #player-selection .rock{
@@ -63,4 +65,10 @@ img {
 #computer-selection .paper, #computer-selection .scissors{
     scale: -1 1;
     rotate: -30deg;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
